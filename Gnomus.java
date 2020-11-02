@@ -15,7 +15,39 @@ public class Gnomus extends Actor
     public void act() 
     {
         int random;
-        move(5);
         
-    }    
+        move(5);
+        if(atWorldEdge()) {
+            move(-5);
+            if(Greenfoot.getRandomNumber(100) < 50) {
+                setRotation(getRotation() + Greenfoot.getRandomNumber(180));
+            }
+            else {
+                setRotation(getRotation() - Greenfoot.getRandomNumber(180));
+            }
+        }
+        else {
+            random = Greenfoot.getRandomNumber(100);
+            if(random < 2) {
+                setRotation(getRotation() + Greenfoot.getRandomNumber(180));
+            }
+            if(random > 98) {
+                setRotation(getRotation() - Greenfoot.getRandomNumber(180));
+            }
+        }
+    }
+    
+    public boolean atWorldEdge() {
+        int x, i , y , wx, wy;
+        
+        x = getX();
+        y = getY();
+        i = getImage().getWidth() / 2;
+        wx = getWorld().getWidth() - i;
+        wy = getWorld().getHeight() - i;
+        if(x <= i || y <= i || x >= wx || y >= wy) {
+            return true;    
+        }
+        return false;
+    }
 }
