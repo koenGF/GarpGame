@@ -11,7 +11,7 @@ public class Garp extends Actor
     private GreenfootImage imageLeft;
     private GreenfootImage imageRight;
     
-    public Garp() 
+    public Garp()
     {
         imageLeft = new GreenfootImage("GarpLeft.png");
         imageRight = new GreenfootImage("GarpRight.png");        

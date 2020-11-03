@@ -8,6 +8,10 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Gnomus extends Actor
 {
+    public Gnomus() {
+        setRotation();
+    }
+    
     /**
      * Act - do whatever the Gnomus wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -19,21 +23,7 @@ public class Gnomus extends Actor
         move(5);
         if(atWorldEdge()) {
             move(-5);
-            if(Greenfoot.getRandomNumber(100) < 50) {
-                setRotation(getRotation() + Greenfoot.getRandomNumber(180));
-            }
-            else {
-                setRotation(getRotation() - Greenfoot.getRandomNumber(180));
-            }
-        }
-        else {
-            random = Greenfoot.getRandomNumber(100);
-            if(random < 2) {
-                setRotation(getRotation() + Greenfoot.getRandomNumber(180));
-            }
-            if(random > 98) {
-                setRotation(getRotation() - Greenfoot.getRandomNumber(180));
-            }
+            setRotation();
         }
     }
     
@@ -50,4 +40,13 @@ public class Gnomus extends Actor
         }
         return false;
     }
-}
+    
+    protected void setRotation() {
+        if(Greenfoot.getRandomNumber(100) < 50) {
+                setRotation(getRotation() + Greenfoot.getRandomNumber(180));
+            }
+        else {
+                setRotation(getRotation() - Greenfoot.getRandomNumber(180));
+            }
+        }
+    }
