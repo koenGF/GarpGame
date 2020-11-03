@@ -1,4 +1,5 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import java.util.List;
 
 /**
  * Write a description of class Garp here.
@@ -78,11 +79,19 @@ public class Garp extends Actor
     protected void collectingDiamonds() {
         Actor diamond;
         World world;
+        Counter counter;
+        List list;
         
         diamond = getOneObjectAtOffset(0, 0, Diamond.class);
         if(diamond != null) {
             world = getWorld();
             world.removeObject(diamond);
+            list = world.getObjects(Counter.class);
+            counter = (Counter)list.get(0);
+            counter.addScore();
+            if(counter.getScore() == 10) {
+                Greenfoot.stop();
+            }
         }
     }
     
