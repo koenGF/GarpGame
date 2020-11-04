@@ -78,26 +78,16 @@ public class Garp extends Actor
     
     protected void collectingDiamonds() {
         Actor diamond;
-        World world;
-        Counter counter;
-        List list;
-        
         diamond = getOneObjectAtOffset(0, 0, Diamond.class);
-        if(diamond != null) {
-            world = getWorld();
-            world.removeObject(diamond);
-            list = world.getObjects(Counter.class);
-            counter = (Counter)list.get(0);
-            counter.addScore();
-            if(counter.getScore() == 10) {
-                Greenfoot.stop();
-            }
+        
+        if(this.isTouching(Diamond.class)) {
+            getWorld().removeObject(diamond);
         }
     }
     
     protected boolean foundRock() {
         Actor rock;
-        rock = getOneObjectAtOffset(0, 0, Rock.class);
+        rock = getOneObjectAtOffset(0,0, Rock.class);
         if(rock != null) {
             return true;
         }

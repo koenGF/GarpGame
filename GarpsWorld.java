@@ -9,6 +9,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class GarpsWorld extends World
 {
     private GreenfootSound sound;
+    Counter counter = new Counter();
+
     
     /**
      * Constructor for objects of class GarpsWorld.
@@ -24,11 +26,11 @@ public class GarpsWorld extends World
     
     protected void populateTheWorld() {
         int teller;
-        int regel, kolom;
-        Counter counter;
+        
         
         addObject(new Garp(), getWidth() / 2, getHeight() / 2);
         addObject(new Gnomus(), Greenfoot.getRandomNumber(getWidth() - 30) + 15, Greenfoot.getRandomNumber(getHeight() - 30) + 15);
+        addObject(counter, 50,50);
         for(teller = 0; teller <10; teller++) {
             addObject(new Diamond(), Greenfoot.getRandomNumber(getWidth()),Greenfoot.getRandomNumber(getHeight()));
         }
@@ -38,10 +40,7 @@ public class GarpsWorld extends World
         for(teller = 0; teller <4; teller++) {
             addObject(new Bomb(), Greenfoot.getRandomNumber(getWidth()),Greenfoot.getRandomNumber(getHeight()));
         }
-        counter = new Counter();
-        regel = getHeight() - counter.getImage().getHeight() / 2 -2;
-        kolom = counter.getImage().getWidth() /2 + 1;
-        setPaintOrder(Counter.class, Garp.class, Gnomus.class, Diamond.class, Bomb.class, Rock.class);
+        setPaintOrder(Garp.class, Gnomus.class, Diamond.class, Bomb.class, Rock.class);
     }
     
     public void started() {

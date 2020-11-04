@@ -39,7 +39,7 @@ public class Gnomus extends Actor
     }
     
     public boolean atWorldEdge() {
-        int x, i , y , wx, wy;
+        int x, y, i, wx, wy;
         
         x = getX();
         y = getY();
